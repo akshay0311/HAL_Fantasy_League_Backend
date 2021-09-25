@@ -10,6 +10,8 @@ app.use(express.json());
 
 
 app.use("/players",require("../routes/players"));
+app.use("/scores", require("../routes/scores"))
+
 
 app.listen(4000, ()=> {
     console.log(`App Listening at port 4000`);
