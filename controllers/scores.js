@@ -4,7 +4,7 @@ const pool = require("../config/db.js");
 module.exports.getAllScores = async (req, res) => {
   try {
     const all_scores = await pool.query("SELECT * FROM scores");
-    res.status(201).json({ all_scores: all_scores.rows });
+    res.status(200).json({ all_scores: all_scores.rows });
   } catch (err) {
     console.log(err);
   }
