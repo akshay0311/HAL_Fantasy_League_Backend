@@ -4,11 +4,24 @@ const pool = require("../config/db.js");
 module.exports.getAllUsers = async (req, res) => {
   try {
     const all_users = await pool.query("SELECT * FROM users");
-    res.status(200).json({ all_scores: all_users.rows });
+    res.status(200).json({ all_users: all_users.rows });
   } catch (err) {
     console.log(err);
   }
 };
+
+module.exports.getUserByEmail = async (req, res) => {
+  const {email} = req.params;
+  console.log(email);
+  try {
+    const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+    res.status(200).json({ user: user.rows });
+  } catch (err) {
+    console.log(err);
+  }
+
+}
+
 
 // adding a user
 module.exports.addUser = async (req, res) => {
