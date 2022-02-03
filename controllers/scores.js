@@ -7,12 +7,7 @@ module.exports.getAllScores = async (req, res) => {
     if (all_scores.length > 0)
       res.status(200).json({ all_scores: all_scores.rows });
     else {
-      let all_scores = {
-        date: null,
-        playername: null,
-        goals: null,
-      };
-      res.status(200).json({ all_scores });
+      res.status(200).json({ all_scores : all_scores.rows });
     }
   } catch (err) {
     console.log(err);
